@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "TA.Client"
+        version   = "1.0.0">
+  <name>TA</name>
+
+  <description>
+    TA
+  </description>
+  <access origin="*" />
+  <gap:plugin name="org.apache.cordova.camera" />
+  <gap:plugin name="org.apache.cordova.media-capture" />
+  <gap:plugin name="org.apache.cordova.device" />
+  <gap:plugin name="org.apache.cordova.device-motion" />
+  <gap:plugin name="org.apache.cordova.device-orientation" />
+  <gap:plugin name="org.apache.cordova.dialogs" />
+  <gap:plugin name="org.apache.cordova.file" />
+  <gap:plugin name="org.apache.cordova.file-transfer" />
+  <gap:plugin name="org.apache.cordova.geolocation" version="0.3.10"/>
+  <gap:plugin name="org.apache.cordova.inappbrowser" />
+  <gap:plugin name="org.apache.cordova.network-information" />
+  <gap:plugin name="org.apache.cordova.splashscreen" />
+  <gap:plugin name="nl.x-services.plugins.toast" />
+  <gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog"/>
+  <gap:plugin name="nl.x-services.plugins.actionsheet" version="1.1.1" />
+  <gap:plugin name="org.apache.cordova.media" version="0.2.13" />
+  <gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+  <gap:plugin name="org.transistorsoft.cordova.background-geolocation" version="0.3.5" />
+  <gap:plugin name="cc.fovea.plugins.inapppurchase" version="3.4.0" />
+  <gap:plugin name="com.mcm.plugins.androidinappbilling" version="3.0.6" />
+  <!--<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />-->
+
+  <author href="http://phonegap.com" email="support@phonegap.com">
+    TA
+  </author>
+
+  <feature name="Notification">
+    <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+  </feature>
+  <feature name="NetworkStatus" value="NetworkStatus"/>
+
+  <feature name="Vibration">
+    <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
+  </feature>
+
+  <feature name="Contacts">
+    <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
+  </feature>
+
+  <feature name="InAppBrowser">
+    <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+  </feature>
+
+  <feature name="Geolocation">
+    <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+  </feature>
+
+  <feature name="NetworkStatus">
+    <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+  </feature>
+
+  <feature name="SplashScreen">
+    <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+  </feature>
+
+  <feature name="ActionSheet">
+    <param name="android-package" value="nl.xservices.plugins.actionsheet.ActionSheet"/>
+  </feature>
+
+  <feature name="InAppBillingPlugin">
+    <param name="android-package" value="com.smartmobilesoftware.inappbilling.InAppBillingPlugin"/>
+  </feature>
+
+  <feature name="Toast">
+    <param name="android-package" value="nl.xservices.plugins.Toast" />
+  </feature>
+
+  <feature name="PushPlugin" >
+    <param name="android-package" value="com.amazon.cordova.plugin.PushPlugin"/>
+  </feature>
+
+  <feature name="Contacts">
+    <param name="ios-package" value="CDVContacts" />
+  </feature>
+
+  <feature name="NetworkStatus">
+    <param name="ios-package" value="CDVConnection" />
+  </feature>
+
+  <feature name="InAppBrowser">
+    <param name="ios-package" value="CDVInAppBrowser" />
+  </feature>
+
+  <feature name="ActionSheet">
+    <param name="ios-package" value="ActionSheet" />
+  </feature>
+  
+  <feature name="Geolocation">
+    <param name="ios-package" value="CDVLocation" />
+  </feature>
+
+  <feature name="Toast">
+    <param name="ios-package" value="Toast" />
+  </feature>
+
+  <feature name="SplashScreen">
+    <param name="ios-package" value="CDVSplashScreen" />
+  </feature>
+
+  <feature name="InAppPurchase">
+    <param name="ios-package" value="InAppPurchase" />
+  </feature>
+
+  <!--<feature name="PushPlugin">
+    <param name="ios-package" value="PushPlugin" />
+  </feature>-->
+
+  <preference name="orientation"      value="portrait" />
+  <preference name="EnableViewportScale"      value="false" />
+  <preference name="target-device"    value="handset" />
+  <preference name="fullscreen"       value="false" />
+  <preference name="webviewbounce"    value="false" />
+  <!--<preference name="splash-screen-duration" value="2000"/>-->
+  <preference name="SplashScreenDelay" value="10000" />
+  <preference name="auto-hide-splash-screen" value="false" />
+  <preference name="phonegap-version" value="3.6.3" />
+  <preference name="statusbaroverlayswebview" value="false" />
+  <preference name="statusbarbackgroundcolor" value="#e0cf75" />
+
+  <gap:url-scheme name="com.acme.myscheme" role="None">
+    <scheme>pgbr</scheme>
+    <scheme>pgbw</scheme>
+  </gap:url-scheme>
+
+<icon gap:platform="android" gap:qualifier="ldpi" src="res/icons/android/drawable-ldpi/ic_launcher.png" />
+  <icon gap:platform="android" gap:qualifier="mdpi" src="res/icons/android/drawable-mdpi/ic_launcher.png" />
+  <icon gap:platform="android" gap:qualifier="hdpi" src="res/icons/android/drawable-hdpi/ic_launcher.png" />
+  <icon gap:platform="android" gap:qualifier="xhdpi" src="res/icons/android/drawable-xhdpi/ic_launcher.png" />
+  <icon gap:platform="android" gap:qualifier="xxhdpi" src="res/icons/android/drawable-xxhdpi/ic_launcher.png" />
+  <icon gap:platform="android" gap:qualifier="xxxhdpi" src="res/icons/android/drawable-xxxhdpi/ic_launcher.png" />
+  <icon src="res/icons/ios/icon_57.png"            gap:platform="ios"        width="57" height="57" />
+  <icon src="res/icons/ios/icon_72.png"            gap:platform="ios"        width="72" height="72" />
+  <icon src="res/icons/ios/icon_114.png"         gap:platform="ios"        width="114" height="114" />
+  <icon src="res/icons/ios/icon_144.png"         gap:platform="ios"        width="144" height="144" />
+  <icon src="res/icons/ios/icon_120.png"            gap:platform="ios"        width="120" height="120" />
+  <icon src="res/icons/ios/icon_152.png"            gap:platform="ios"        width="152" height="152" />
+  <icon src="res/icons/ios/icon_76.png"         gap:platform="ios"        width="76" height="76" />
+  <gap:splash src="res/screen/android/480_800.png"  gap:platform="android" gap:density="ldpi" />
+  <gap:splash src="res/screen/android/960_540.png"  gap:platform="android" gap:density="mdpi" />
+  <gap:splash src="res/screen/android/1280_720.png"  gap:platform="android" gap:density="hdpi" />
+  <gap:splash src="res/screen/android/1920_1080.png" gap:platform="android" gap:density="xhdpi" />
+  <gap:splash src="res/screen/ios/320_480.png" gap:platform="ios" width="320" height="480" />
+  <gap:splash src="res/screen/ios/640_960.png" gap:platform="ios" width="640" height="960" />
+  <gap:splash src="res/screen/ios/640_1136.png" gap:platform="ios" height="1136"  width="640" />
+  <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
+</widget>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="Scripts/jquery-1.9.1.min.js"></script>
+		<script src="Scripts/jquery.mobile-1.4.4.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script src="gmcScripts/resource.js"></script>
+		<script src="gmcScripts/Common.js"></script>
+        <script src="gmcScripts/Core.js"></script>
+        <script src="gmcScripts/completeprofile.js"></script>
+		<link href="css/jquery.mobile.flatui.css" rel="stylesheet" />
+		<link href="css/main.css" rel="stylesheet" />
+	</head>
+	<body>
+        <div data-role="page" id="pageCompleteProfile" class="c_Iris-to-Pacific" data-theme="a">
+
+            <div class="ui-content">
+
+                <div class="ui-grid-b">
+                    <div class="ui-block-a" style="width: 30%;">
+                        <hr>
+                    </div>
+                    <div class="ui-block-b c_WhiteLabel" style="text-align: center;width: 40%;">Complete profile</div>
+                    <div class="ui-block-c" style="width: 30%;">
+                        <hr>
+                    </div>
+                </div><br />
+                <div style="text-align: center;"><img src="Images/logo.png" style="width:80px;" /></div>
+                <div id="pageLogin_tabReg">
+                    <div>
+                        <label class="c_WhiteLabel">First Name</label>
+                        <input data-theme="a" type="text" id="pageCompleteProfile_txtFirstName" class="form-control" placeholder="Enter your first name" maxlength="32">
+                    </div>
+                    <div>
+                        <label class="c_WhiteLabel">Last Name</label>
+                        <input data-theme="a" type="text" id="pageCompleteProfile_txtLastName" class="form-control" placeholder="Enter your last name" maxlength="32">
+                    </div>
+                    <!--<div id="pageCompleteProfile_divMobile" style="display:none;">
+                        <label class="c_WhiteLabel">Mobile</label>
+                        <input data-theme="a" type="text" id="pageCompleteProfile_txtMobile" class="form-control" placeholder="Enter your mobile" maxlength="32">
+                    </div>-->
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <label class="c_WhiteLabel">Gender</label>
+                            <div data-role="navbar" style="width:95%; margin-top:8px;">
+                                <ul style="background-color: #00acde; border-radius: 5px;" id="nav_gender">
+                                    <li><a id="pageCompleteProfile_male" href="#" data-gender-value="1" class="ui-btn-active btnDeactive" style="border: none; border-bottom-right-radius: 0px; border-top-right-radius: 0px;">male</a></li>
+                                    <li><a id="pageCompleteProfile_female" href="#" data-gender-value="2" class="ui-btn-active btnDeactive" style="border: none; border-bottom-left-radius: 0px; border-top-left-radius: 0px;">female</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <label class="c_WhiteLabel">Date of Birth</label>
+                            <input data-theme="a" type="date" id="pageCompleteProfile_dateBirthday" placeholder="DD/MM/YYYY">
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <label class="c_WhiteLabel">Post Code</label>
+                            <input data-theme="a" type="number" style="width:95%;" id="pageCompleteProfile_txtPostCode" placeholder="Enter postcode" max="99999">
+                        </div>
+                        <div class="ui-block-b">
+                            <label class="c_WhiteLabel">State</label>
+                            <select name="pageCompleteProfile_selectState" id="pageCompleteProfile_selectState" class="ui-mini" data-theme="c"></select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="c_WhiteLabel">Surburb</label>
+                        <textarea data-theme="a" id="pageCompleteProfile_Surburb" placeholder="Enter your surburb"></textarea>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <a data-role="button" style="background-color: #ab5165; color: white; border: #ab5165; margin-left: 0px; border-radius:2px; z-index:9997" id="pageCompleteProfile_btnSkip">Skip</a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a data-theme="a" href="" data-role="button" id="pageCompleteProfile_btnNext" class="ui-mini" style="margin-right: 0px; border-radius: 2px; border:0px">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</body>
+
+</html>

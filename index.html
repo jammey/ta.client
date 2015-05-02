@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="Scripts/iscroll.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="http://192.168.5.118:8088/signalr/hubs"></script>
+    <script src="Scripts/jquery.mobile-1.4.4.min.js"></script>
+    <script src="Scripts/jquery.image.lazyload.js"></script>
+    <script src="Scripts/customPanel.js"></script>
+    <script src="Scripts/hello.js"></script>
+    <script src="Scripts/Swipe.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
+    <script src="Scripts/jquery.autosize.min.js"></script>
+    <script src="Scripts/jquery.md5.js"></script>
+    <script src="gmcScripts/resource.js"></script>
+    <script src="gmcScripts/Common.js"></script>
+    <script src="gmcScripts/Core.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script src="Scripts/jquery.ui.map.full.min.js"></script>
+    <script src="Scripts/jquery.ui.map.services.min.js"></script>
+    <script src="Scripts/jquery.ui.map.overlays.min.js"></script>
+    <script src="gmcScripts/Main.js"></script>
+    <script src="gmcScripts/chat.js"></script>
+    <script src="gmcScripts/reg.js"></script>
+    <script src="gmcScripts/completeprofile.js"></script>
+    <script src="gmcScripts/forgetpassword.js"></script>
+    <script src="gmcScripts/bindMobile.js"></script>
+    <link href="css/jquery.mobile.flatui.css" rel="stylesheet" />
+    <link href="css/idangerous.swiper.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="hidden" id="pageLoadingCount" value="0" />
+    <div data-role="page" id="pageIndex" class="c_Iris-to-Pacific" data-theme="a" style="display:none;">
+        <div class="ui-content">
+            <div class="" style="text-align:center"><img src="Images/logo.png" style="width: 80px;" /></div>
+
+            <div class="ui-grid-b">
+                <div class="ui-block-a"><hr></div>
+                <div class="ui-block-b c_White" style="text-align: center;">Sign in</div>
+                <div class="ui-block-c"><hr></div>
+            </div>
+            <div id="pageIndex_tabLogin">
+                <div>
+                    <a class="signinBtn sign_facebook" href="#" data-transition="slide" id="btn_sign_facebook">
+                        <span class="line"></span>
+                        <span class="sign_text">Sign in with Facebook</span>
+                    </a>
+                    <a class="signinBtn sign_twitter" href="#" id="btn_sign_twitter"><span class="line"></span><span class="sign_text">Sign in with Twitter</span></a>
+                    <a class="signinBtn sign_google" href="#" id="btn_sign_google"><span class="line"></span><span class="sign_text">Sign in with Google+</span></a>
+                </div>
+
+                <div class="ui-grid-b">
+                    <div class="ui-block-a" style="width: 25%;"><hr></div>
+                    <div class="ui-block-b c_White" style="text-align: center;width:50%">or use mobile</div>
+                    <div class="ui-block-c" style="width: 25%;">
+                        <hr>
+
+                    </div>
+                </div>
+                <div>
+                    <label class="c_WhiteLabel">MOBILE</label>
+                    <input data-theme="a" type="tel" id="pageIndex_txtLoginMobile" placeholder="Mobile" class="ui-corner-all" maxlength="12" value="123456789">
+                </div>
+                <div>
+                    <label class="c_WhiteLabel">PASSWORD</label>
+                    <input data-theme="a" type="password" id="pageIndex_txtLoginPassword" placeholder="Password" maxlength="32" value="123456">
+                </div>
+                <!--<div>
+                    <label class="c_WhiteLabel">MOBILE</label>
+                    <input data-theme="a" type="tel" id="pageIndex_txtLoginMobile" placeholder="Mobile" class="ui-corner-all" maxlength="12">
+                </div>
+                <div>
+                    <label class="c_WhiteLabel">PASSWORD</label>
+                    <input data-theme="a" type="password" id="pageIndex_txtLoginPassword" placeholder="Password" maxlength="32">
+                </div>-->
+
+                <div style="font-size:smaller;color:white;text-decoration:none;margin-right:.5em; text-align: right; margin-top:15px; margin-bottom:15px;" data-theme="f">
+                    <span style="display:block; float:right; margin-top:-2px;">Remember me</span><span style="display:block; float:right; margin-right:35px;">
+                        <input type="checkbox" id="chkRememberMe" />
+                    </span>
+                </div>
+                <div class="clear"></div>
+                <a data-theme="a" href="#" data-role="button" id="pageIndex_btnLogin" class="ui-mini" data-mini="true" style="margin-top: 15px; border-radius: 2px;">Sign in</a>
+                <div style="font-size:smaller;color:white;text-decoration:none;margin-right:.5em; text-align: right;">
+                    <a id="pageIndex_liForgetPassword" href="forgetpassword.html" data-transition="slide" class="darkblue">Forget password?</a>
+                </div>
+                <hr>
+                <div style="text-align: center;" class="c_WhiteLabel">Don't have an account?&nbsp;&nbsp;&nbsp;<a href="reg.html" data-transition="slide" class="darkblue" style="font-size: smaller;">Sign up</a></div>
+
+            </div>
+        </div>
+        <!-- /content -->
+
+        <script type="text/javascript">
+            var CLIENT_IDS_ALL = {
+                google: Config.google_client_id,
+                facebook: Config.facebook_client_id,
+                twitter: Config.twitter_client_id,
+            };
+
+            hello.init(CLIENT_IDS_ALL, {
+                redirect_uri: Config.thirdparty_redirect_uri,
+                oauth_proxy: Config.thirdparty_oauth_proxy
+            });
+
+            $(document).on("pageshow", "#pageIndex", function (event, ui) {
+                var selfPage = $(this);
+
+                if (localStorage.getItem("c_autoLogin") && localStorage.getItem("c_autoLogin") == "true") {
+                    window.location.href = "main.html";
+                } else {
+                    selfPage.show();
+                }
+
+                $("#pageIndex_btnLogin").off("click").on("click", function () {
+                                                         
+                    var pageIndex_txtLoginMobile = $.trim($("#pageIndex_txtLoginMobile").val());
+                    var pageIndex_txtLoginPassword = $.trim($("#pageIndex_txtLoginPassword").val());
+                    if (pageIndex_txtLoginMobile == "") {
+                        Messagebox.popup(WarningMessage.MobileRequired);
+                        return;
+                    } else {
+                        if (!$("#pageIndex_txtLoginMobile").mobileValidate(WarningMessage.InvalidMobile)) {
+                            return;
+                        }
+                    }
+
+                    if (pageIndex_txtLoginPassword == "") {
+                        Messagebox.popup(WarningMessage.PasswordRequired);
+                        return;
+                    } else {
+                        if (pageIndex_txtLoginPassword.length < 6 || pageIndex_txtLoginPassword.length > 32) {
+                            Messagebox.popup(WarningMessage.InvalidPassword);
+                            return;
+                        }
+                    }
+
+                    Login(pageIndex_txtLoginMobile, pageIndex_txtLoginPassword, function () {
+                        
+                        if ($("#chkRememberMe").attr("data-cacheval") == "false") {
+                            localStorage.setItem("c_autoLogin", "true");
+                        } else {
+                            localStorage.setItem("c_autoLogin", "false");
+                        }
+
+                        changePage("main.html");
+                    });
+                });
+
+                $("#btn_sign_facebook").off("click").on("click", function () {
+                    thirdPartyLogin("facebook");
+                });
+
+                $("#btn_sign_twitter").off("click").on("click", function () {
+                    thirdPartyLogin("twitter");
+                });
+
+                $("#btn_sign_google").off("click").on("click", function () {
+                    thirdPartyLogin("google");
+                });
+
+                function thirdPartyLogin(platform) {
+                    hello(platform).login().then(function () {
+                        hello(platform).api('/me').then(function (r) {
+                            Ajax.getJson("SocialLogin", { socialUserId: r.id, socialPlatformName: platform, accountType: 0 }, function (data) {
+                                if (!data.IsSuccess) {
+                                    Messagebox.popup(data.Message);
+                                    return;
+                                }
+
+                                localStorage.setItem("c_accountId", data.Data.Id);
+                                localStorage.setItem("c_account", "");
+                                localStorage.setItem("c_firstName", r.first_name || "");
+                                localStorage.setItem("c_lastName", r.last_name || "");
+                                localStorage.setItem("c_gender", r.gender && r.gender.toString().toLowerCase() == "male" ? "1" : "2");
+                                localStorage.setItem("c_avatar", r.thumbnail);
+                                localStorage.setItem("c_hasBindMobile", data.Data.PhoneNumber ? "true" : "false");
+
+                                if (data.Data.IsNewRegister) {
+                                    changePage("bindMobile.html");
+                                    var url = Config.chatHubRootPath + "UploadThumbnail/SocialPost?accountId=" + getCurrentAccountId() + "&avatarUrl=" + encodeURI(r.thumbnail);
+                                    $.get(url, function (data) { });
+                                } else {
+                                    changePage("main.html");
+                                }
+                            });
+                        }, function (e) {
+                        });
+                    });
+                }
+            });
+        </script>
+        <script src="Scripts/Swipe.js"></script>
+        <!-- /footer -->
+    </div>
+
+    <div style="display:none" id="coverDiv">
+        <div class="ui-popup-screen ui-overlay-f in" style="background-color:#000;"></div>
+        <div class="bubble ui-mini" id="divBubble">
+            <p id="coverDiv_text"></p>
+            <a data-role="button" id="coverDiv_btn" data-theme="a" data-inline="true" data-mini="true">gotcha</a>
+        </div>
+        <div class="skip"><a href="" data-role="none" onclick="$('#coverDiv').hide()">skip>></a></div>
+    </div>
+</body>
+
+</html>

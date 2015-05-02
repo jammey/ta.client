@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="Scripts/iscroll.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="http://192.168.5.118:8088/signalr/hubs"></script>
+    <script src="Scripts/jquery.mobile-1.4.4.min.js"></script>
+    <script src="Scripts/jquery.image.lazyload.js"></script>
+    <script src="Scripts/customPanel.js"></script>
+    <script src="Scripts/hello.js"></script>
+    <script src="Scripts/Swipe.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script src="Scripts/jquery.autosize.min.js"></script>
+    <script src="Scripts/jquery.md5.js"></script>
+    <script src="gmcScripts/resource.js"></script>
+    <script src="gmcScripts/Common.js"></script>
+    <script src="gmcScripts/Core.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script src="Scripts/jquery.ui.map.full.min.js"></script>
+    <script src="Scripts/jquery.ui.map.services.min.js"></script>
+    <script src="Scripts/jquery.ui.map.overlays.min.js"></script>
+    <script src="gmcScripts/Main.js"></script>
+    <script src="gmcScripts/chat.js"></script>
+    <script src="gmcScripts/reg.js"></script>
+    <script src="gmcScripts/completeprofile.js"></script>
+    <script src="gmcScripts/forgetpassword.js"></script>
+    <link href="css/jquery.mobile.flatui.css" rel="stylesheet" />
+    <link href="css/idangerous.swiper.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div data-role="page" id="pageMain" data-theme="f">
+        <div data-role="header" data-position="fixed" id="aHeader" data-tap-toggle="false">
+            <a href="#popupCategory" data-rel="popup" data-position-to="#aCategory" data-transition="pop" data-role="none" style="margin-top: 8px; margin-left:3px;" id="aCategory"><img src="Images/category.png"></a>
+            <h2 id="pageMain_aTitle"></h2>
+            <a href="#panelMenu" data-role="none" data-iconpos="notext" data-transition="slide" style="margin-top: 9px; margin-right:3px;width:40px;text-align:center;"><img src="Images/iconfont-caidan.png"></a>
+        </div>
+
+        <!-- /header -->
+        <div id="contentDiv">
+            <div id="map_canvas"></div>
+            <div id="divTradie">
+                <p id="divMessage" style="text-align:center">
+                    Please choose a service category,<br />
+                    then a tradie on map.
+                </p>
+                <div class="swiper-container" id="tradieInfo" style="display:none;height:75px;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div style="font-weight:bold" class="tradieTitle"></div>
+                            <div id="pageMain_divRating">
+                                <img src="Images/iconfont-wujiaoxingYellow.png" style="width:16px;" />
+                                <img src="Images/iconfont-wujiaoxingYellow.png" style="width:16px;" />
+                                <img src="Images/iconfont-wujiaoxingYellow.png" style="width:16px;" />
+                                <img src="Images/iconfont-wujiaoxingYellow.png" style="width:16px;" />
+                                <img src="Images/iconfont-wujiaoxing.png" style="width:16px;" />
+                            </div>
+                            <span class="clear" id="tradieDistance"></span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div style="font-weight:bold" class="tradieTitle"></div>
+                            <div id="pageMain_divDesc" style="font-size:smaller"></div>
+                        </div>
+                    </div>
+                    <div class="pagination"></div>
+                </div>
+            </div>
+
+            <div data-role="panel" id="panelMenu" style="border:none!important; padding:0px" data-position="right" data-theme="a" data-display="overlay" class="ui-responsive-panel toppaneloverlaylist">
+                <ul class="c_Tax-to-Pacific1 taSettings" style="position:relative;">
+                    <li id="liCustomerPhoto">
+                        <img src="Images/nophoto.png" style="border-radius:10px; height: 80px; width: 80px;" id="pageMain_CustomerPhoto">
+                    </li>
+                    <li id="liCustomerInfo">
+                        <div></div>
+                        <div></div>
+                    </li>
+                    <li style="position:absolute; bottom:5px; right:5px; width:60px;text-align:center;" id="liOpenSetting" state="0">
+                        <img src="Images/iconfont-jiantou1.png" />
+                    </li>
+                </ul>
+                <div id="pageMain_updateProfile" style="display:none; background-color:rgb(235,234,234); border-top:1px solid rgb(235,234,234); height:100%" data-inset="false">
+                    <div>
+                        <input data-theme="a" data-inset="false" type="text" id="pageMain_txtFirstName" class="form-control" placeholder="Enter your first name" maxlength="32">
+                    </div>
+                    <div>
+                        <input data-theme="a" type="text" id="pageMain_txtLastName" class="form-control" placeholder="Enter your last name" maxlength="32">
+                    </div>
+
+                    <div data-role="navbar" style="margin-left:5px; margin-right:10px; margin-top:8px;">
+                        <ul style="background-color: #00acde; border-radius: 5px;" id="pageMain_gender">
+                            <li><a id="pageMain_male" href="#" data-gender-value="1" class="ui-btn-active btnDeactive" style="border: none; border-bottom-right-radius: 0px; border-top-right-radius: 0px;">male</a></li>
+                            <li><a id="pageMain_female" href="#" data-gender-value="2" class="ui-btn-active btnDeactive" style="border: none; border-bottom-left-radius: 0px; border-top-left-radius: 0px;">female</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <input data-theme="a" type="date" id="pageMain_dateBirthday" placeholder="DD/MM/YYYY">
+                    </div>
+
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <input data-theme="a" type="number" style="width:95%;" id="pageMain_txtPostCode" placeholder="Postcode" max="99999">
+                        </div>
+                        <div class="ui-block-b">
+                            <select name="pageMain_selectState" id="pageMain_selectState" class="ui-mini" data-theme="c"></select>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea data-theme="a" id="pageMain_Surburb" placeholder="Enter your surburb"></textarea>
+                    </div>
+                    <a data-theme="f" href="" data-role="button" id="pageMain_btnSave" class="ui-mini" style="margin-right: 0px; border-radius: 2px; border:0px">Save</a>
+                </div>
+
+                <ul data-role="listview" data-theme="c" id="listviewMenu">
+                    <li data-icon="false">
+                        <a href="#panelSetting" style="text-align:center;background-color: #FFFFFF; ">Settings</a>
+                    </li>
+                    <li data-icon="false" id="liBindMobile" style="display:none;">
+                        <a href="#panelBindMobile" style="text-align:center;background-color: #FFFFFF; ">Bind Mobile</a>
+                    </li>
+                    <li data-icon="false">
+                        <a href="#panelAboutus" style="text-align:center;background-color: #FFFFFF;">About us</a>
+                    </li>
+                    <li data-icon="false">
+                        <a href="#panelTerms" style="text-align:center;background-color: #FFFFFF; ">Terms & Privacy</a>
+                    </li>
+                    <li style="height:100px;"></li>
+                    <li data-icon="false">
+                        <a data-rel="dialog" style="text-align:center;background-color: #FFFFFF; color: red;" id="btnSignout">Sign out</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div data-role="popup" id="popupCategory" style="border:none!important" data-dismissible="false" data-overlay-theme="f" class="ui-mini">
+
+            </div>
+
+            <div data-role="panel" data-position="bottom" data-display="overlay" id="toppaneloverlaylist" data-theme="a" style="border:none" class="toppaneloverlaylist">
+                <div style="text-align: center; background-color: #0689C7">
+                    <img src="Images/iconfont-qipao1.png">
+                </div>
+                <div class="swiper-container " id="messages" style="height:300px">
+                    <img src="Images/per_load.gif" id="preloader" style="display:none; height:30px;" />
+                    <ul data-role="listview" id="pageMain_messageList" class="swiper-wrapper" data-theme="c" data-filter="true" data-inset="false"></ul>
+                </div>
+                <div style="text-align:center; font-size:smaller">
+                    <strong>Updated just for now.</strong><br />
+                    <span id="pageMain_unreadCount"></span>
+                    <ul class="taAds" style="background-color:#0689C7">
+                        <li id="liCustomerPhoto">
+                            <img src="Images/nophoto.png" style="height: 30px; width: 30px;">
+                        </li>
+                        <li id="liCustomerInfo">
+                            <div style="font-size:smaller">JeFactoria Co. in Meibourne,3004 (Car Repairs)</div>
+                            <div data-count="0">
+                                <img src="Images/iconfont-wujiaoxingYellow.png" style="width:12px;" />
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="panel" data-position="right" data-display="overlay" id="panelSetting" data-theme="a" style="border:none" class="toppaneloverlaylist">
+                <ul class="c_Tax-to-Pacific1 taSettings" style="height:44px;">
+                    <li>
+                        <a href="#panelMenu">
+                            <img src="Images/iconfont-caidan.png" style="margin-left:10px; margin-top:12px;">
+                        </a>
+                    </li>
+                </ul>
+                <ul data-role="listview" data-theme="c" data-inset="false" id="listviewSettings">
+                    <li data-role="list-divider">Settings</li>
+                    <li data-icon="false">
+                        Push notification
+                        <select id="selectPush" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="f" class="ui-group-theme-f">
+                            <option value="off">Off</option>
+                            <option value="on" selected="selected">On</option>
+                        </select>
+                    </li>
+                    <li data-icon="false">
+                        Visable to others
+                        <select id="selectVisable" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="f" class="ui-group-theme-f">
+                            <option value="off">Off</option>
+                            <option value="on" selected="selected">On</option>
+                        </select>
+                    </li>
+                    <li data-icon="false">
+                        Location services
+                        <select id="selectLocation" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="f" class="ui-group-theme-f">
+                            <option value="off">Off</option>
+                            <option value="on" selected="selected">On</option>
+                        </select>
+                    </li>
+                    <li></li>
+                    <li data-icon="false">
+                        <a href="" style="font-size: smaller; font-weight: normal; background-color:white">Version: <span id="pageMain_version"></span></a>
+                    </li>
+                    <li></li>
+                    <li id="customer_removeAD">
+                        <a href="" style="font-size: smaller; font-weight: normal; background-color: white" id="customerMain_RemoveAD">Remove the Ads banner($0.99)</a>
+                    </li>
+                    <li></li>
+                    <li>
+                        <a data-theme="f" class="ui-group-theme-f" data-mini="true" data-role="button" style="text-align:center; border-radius:0px" data-inset="false" id="pageMain_CheckUpdate">Check update</a>
+                    </li>
+                    <li data-mini="true">
+                        <a data-theme="g" class="ui-group-theme-g" data-mini="true" data-role="button" style="text-align: center; border-radius: 0px; margin-top:5px; " data-inset="false" id="pageMain_ClearCache">Clear cache</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div data-role="panel" data-position="right" data-display="overlay" id="panelBindMobile" data-theme="a" style="border:none" class="toppaneloverlaylist">
+                <ul class="c_Tax-to-Pacific1 taSettings" style="height:44px;">
+                    <li>
+                        <a id="panelBindMobileMenu" href="#panelMenu">
+                            <img src="Images/iconfont-caidan.png" style="margin-left:10px; margin-top:12px;">
+                        </a>
+                    </li>
+                </ul>
+                <ul data-role="listview" data-theme="c" data-inset="false" id="listviewSettings">
+                    <li data-role="list-divider">Bind Mobile</li>
+                </ul>
+                <div style="background-color:rgb(235,234,234); border-top:1px solid rgb(235,234,234); height:100%" data-inset="false">
+                    <div>
+                        <input data-theme="a" data-inset="false" type="text" id="pageMain_txtBindMobile" class="form-control" placeholder="Enter your mobile" maxlength="32">
+                    </div>
+                    <div>
+                        <input data-theme="a" type="password" id="pageMain_txtPassword" class="form-control" placeholder="Enter your password" maxlength="32">
+                    </div>
+                    <a data-theme="f" href="" data-role="button" id="pageMain_btnBindMobile" class="ui-mini" style="margin-right: 0px; border-radius: 2px; border:0px">Save</a>
+                </div>
+            </div>
+
+            <div data-role="panel" data-position="right" data-display="overlay" id="panelAboutus" data-theme="a" style="border:none" class="toppaneloverlaylist">
+                <ul class="c_Tax-to-Pacific1 taSettings" style="height:44px;">
+                    <li>
+                        <a href="#panelMenu">
+                            <img src="Images/iconfont-caidan.png" style="margin-left:10px; margin-top:12px;">
+                        </a>
+                    </li>
+                </ul>
+                <ul data-role="listview" data-theme="c" data-inset="false">
+                    <li data-role="list-divider">About us</li>
+                </ul>
+                <div class="ui-content">
+                    The respondents listed the downfall of a batch of "big tigers" or high-ranking officials, cracking down on corrupt officials fleeing abroad, and a purge of "naked officials", which refer to those whose spouse and children have emigrated overseas, as the top three biggest results in 2014.
+                </div>
+            </div>
+
+            <div data-role="panel" data-position="right" data-display="overlay" id="panelTerms" data-theme="a" style="border:none" class="toppaneloverlaylist">
+                <ul class="c_Tax-to-Pacific1 taSettings" style="height:44px;">
+                    <li>
+                        <a href="#panelMenu">
+                            <img src="Images/iconfont-caidan.png" style="margin-left:10px; margin-top:12px;">
+                        </a>
+                    </li>
+                </ul>
+                <ul data-role="listview" data-theme="c" data-inset="false">
+                    <li data-role="list-divider">Terms & Privacy</li>
+                </ul>
+                <div class="ui-content">
+                    The respondents listed the downfall of a batch of "big tigers" or high-ranking officials, cracking down on corrupt officials fleeing abroad, and a purge of "naked officials", which refer to those whose spouse and children have emigrated overseas, as the top three biggest results in 2014.
+                </div>
+            </div>
+
+            <div data-role="popup" data-theme="none" data-shadow="false" id="divMessageType" style="width:140px">
+                <p class="triangle-isosceles" style="height:60px;">
+                </p>
+                <div style="color:white; z-index:9999; position:absolute; top:2px; left:13px" class="ui-mini" id="divSendMessage">
+                    <a data-role="button" data-inline="true" data-icon="flat-bubble" data-iconpos="notext" class="messageIcon" data-message-type="0"></a>
+                    <a data-role="button" data-inline="true" data-icon="flat-volume" data-iconpos="notext" class="messageIcon" data-message-type="1"></a>
+                    <a data-role="button" data-inline="true" data-icon="flat-camera" data-iconpos="notext" class="messageIcon" data-message-type="2"></a>
+                    <a data-role="button" data-inline="true" data-mini="true" style="padding:5px 10px; width:90px;" data-theme="a" id="btnRate">Rate</a>
+                </div>
+                <div style="color:white; z-index:9999; position:absolute; top:15px; left:8px; display:none; text-align:center" class="ui-mini" id="divRateForTradie" data-count="0">
+                    <div><img src="Images/iconfont-wujiaoxing.png" style="width: 20px;" /></div>
+                    <div>
+                        <img src="Images/iconfont-wujiaoxing.png" style="width: 20px;" />
+                    </div>
+                    <div>
+                        <img src="Images/iconfont-wujiaoxing.png" style="width: 20px;" />
+                    </div>
+                    <div>
+                        <img src="Images/iconfont-wujiaoxing.png" style="width: 20px;" />
+                    </div>
+                    <div>
+                        <img src="Images/iconfont-wujiaoxing.png" style="width: 20px;" />
+                    </div>
+                    <a data-role="button" data-inline="true" data-mini="true" style="padding:5px 10px; width:30px;border:none" data-theme="c" id="btnRateNo">No</a>
+                    <a data-role="button" data-inline="true" data-mini="true" style="padding:5px 10px; width:30px;" data-theme="a" id="btnRateYes">Yes</a>
+                </div>
+            </div>
+            <div style="position: absolute; top: 10px; left: 8px; z-index: 9999; display: none" id="divCategoryImg"><img src="Images/category.png"></div>
+            <div style="position: absolute; top: 12px; right: 20px; z-index: 9999; display: none" id="divMenuImg"><img src="Images/iconfont-caidan.png"></div>
+        </div>
+
+        <div id="divTemplete" style="display:none">
+            <ul>
+                <li data-icon="false" class="{4}" style="width:100%" data-from-account-id="{5}">
+                    <a style="background-color:white">
+                        <img id="pageMain_unreadImage" style="display:none;" src="Images/iconfont-19.png" class="ui-li-icon"><h2 id="pageMain_accountName">{1}</h2><p>
+                            {2}
+                        </p>
+                        <p class="ui-li-aside">{3}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /content -->
+        <div data-role="footer" data-position="fixed" id="standardFooter" data-footer-select="0" data-theme="none" data-tap-toggle="false" style="border-top:solid 1px #ddd">
+            <div style="text-align: center;">
+                <img src="Images/iconfont-qipao.png">
+                <span id="pageMain_unreadTotalNumber" style="z-index:9999; position:absolute; top:1px; right:43%; width: 10px; height:10px; background-color: red; border-radius:50%;display:none;"></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

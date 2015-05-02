@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="Scripts/iscroll.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="Scripts/jquery.mobile-1.4.4.min.js"></script>
+    <script src="Scripts/jquery.image.lazyload.js"></script>
+    <script src="Scripts/jquery.autosize.min.js"></script>
+    <script src="Scripts/customPanel.js"></script>
+    <script src="Scripts/hello.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script src="Scripts/jquery.md5.js"></script>
+    <script src="gmcScripts/Common.js"></script>
+    <script src="gmcScripts/Core.js"></script>
+    <script src="gmcScripts/chat.js"></script>
+    <link href="css/jquery.mobile.flatui.css" rel="stylesheet" />
+    <link href="css/idangerous.swiper.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-role="page" id="pageChat" data-theme="f" style="height:100%;background-color:white;overflow-y:hidden;">
+        <div data-role="header">
+            <a href="#" data-role="button" data-icon="back" data-rel="back" data-iconpos="left" data-transition="slide" data-theme="f" style="width:65px;padding-left:1.5em;padding-right:.5em;">Message</a>
+            <h2 id="pageChat_title" style="overflow:initial;">JeFactoria</h2>
+        </div>
+        <div id="pageChat_messageListWrapper">
+            <div id="scroller">
+                <div id="pullDown">
+                    <span class="pullDownIcon"></span> <span class="pullDownLabel"></span>
+                </div>
+                <div id="chat_container" class="content">
+                </div>
+                <div id="pullUp">
+                    <span class="pullUpIcon"></span><span class="pullUpLabel"></span>
+                </div>
+            </div>
+        </div>
+        <div id="pageChat_footer" data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="c" style="z-index:100;height:50px;border: 0px; background-color:#dddddd;">
+        </div>
+        <div id="pageChat_fromAccount_Template" style="display:none;">
+            <div>
+                <p class="triangle-right" id="pageChat_triangle_right"></p>
+            </div>
+            <div style="clear:both;"></div>
+            <div>
+                <p id="pageChat_time" style="float:right;margin-right: 20px;"></p>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="pageChat_toAccount_Template" style="display:none;">
+            <div>
+                <p class="triangle-left" id="pageChat_triangle_left"></p>
+            </div>
+            <div style="clear:both;"></div>
+            <div>
+                <p id="pageChat_time" style="float:left;margin-left: 20px;"></p>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="pageChat_PhotoTemplate" style="display:none;">
+            <div class="ui-grid-b">
+                <div id="chatAction" class="ui-block-a" style="width: 10%;"><a id="actionPhoto" data-theme="f" data-role="button" data-inline="true" data-icon="flat-camera" data-iconpos="notext" class="messageIcon" data-message-type="2"></a></div>
+                <div class="ui-block-b c_White" style="text-align: center;width:90%">
+                    <a data-role="button" href="javascript:void(0)" id="pageChat_btnSendPhoto" style="width:80%;" data-theme="f">
+                        Send a photo message
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="pageChat_VedioTemplate" style="display:none;">
+            <div class="ui-grid-b">
+                <div id="chatAction" class="ui-block-a" style="width: 10%;"><a id="actionVedio" data-theme="f" data-role="button" data-inline="true" data-icon="flat-volume" data-iconpos="notext" class="messageIcon" data-message-type="1"></a></div>
+                <div class="ui-block-b c_White" style="text-align: center;width:90%">
+                    <a data-role="button" href="javascript:void(0)" id="pageChat_btnSendVedio" style="width:80%;" data-theme="f">
+                        Send a audio message
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="pageChat_TextTemplate" style="display:none;">
+            <!--<div id="chatAction" class="ui-block-a" style="width: 10%;">
+                <a data-role="button" data-inline="true" data-icon="flat-bubble" data-theme="a" data-iconpos="notext" class="messageIcon" data-message-type="0"></a>
+            </div>
+            <div class="ui-block-b" style="text-align: center;width:60%;padding:5px;">
+                <textarea id="pageChat_message" data-role="none" placeholder="type your message"></textarea>
+            </div>
+            <div id="chatAction" class="ui-block-c" style="width: 20%;padding-right:5px;">
+                <a data-role="button" href="javascript:void(0)" id="pageChat_btnSendText" style="width:80%;" data-theme="f">
+                    send
+                </a>
+            </div>-->
+            <div>
+                <div id="chatAction" style="float:left;width:10%;text-align:center;padding-left:5px;">
+                    <a data-role="button" data-inline="true" data-icon="flat-bubble" data-theme="f" data-iconpos="notext" class="messageIcon" data-message-type="0"></a>
+                </div>
+                <div style="float:left;width:60%;padding-left:5px;padding-top:5px;">
+                    <textarea id="pageChat_message" data-role="none" placeholder="type your message"></textarea>
+                    <!--<input id="pageChat_message" type="text" data-role="none" style="width:100%;" />-->
+                </div>
+                <div style="float:right;width:12%;padding-right:2em;padding-top:5px;">
+                    <a data-role="button" href="javascript:void(0)" id="pageChat_btnSendText" style="width:80%;" data-theme="f">
+                        send
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="popupChatAction" style="position:absolute;display:none;z-index:9999;">
+            <div><a id="actionMessage" data-theme="f" data-role="button" data-inline="true" data-icon="flat-bubble" data-iconpos="notext" class="messageIcon" data-message-type="0"></a></div>
+            <div><a id="actionVedio" data-theme="f" data-role="button" data-inline="true" data-icon="flat-volume" data-iconpos="notext" class="messageIcon" data-message-type="1"></a></div>
+            <div><a id="actionPhoto" data-theme="f" data-role="button" data-inline="true" data-icon="flat-camera" data-iconpos="notext" class="messageIcon" data-message-type="2"></a></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/jquery.mobile-1.4.4.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script src="gmcScripts/resource.js"></script>
+    <script src="gmcScripts/Common.js"></script>
+    <script src="gmcScripts/Core.js"></script>
+    <script src="gmcScripts/reg.js"></script>
+    <link href="css/jquery.mobile.flatui.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-role="page" id="pageReg" data-theme="none" class="c_Iris-to-Pacific">
+
+        <div class="ui-content">
+            <div class="" style="text-align:center"><img src="Images/logo.png" style="width: 80px;" /></div>
+            <div class="ui-grid-b">
+                <div class="ui-block-a"><hr></div>
+                <div class="ui-block-b c_White" style="text-align: center;">sign up</div>
+                <div class="ui-block-c"><hr></div>
+            </div>
+            <div id="pageLogin_tabReg">
+                <div>
+                    <label class="c_WhiteLabel">MOBILE</label>
+                    <input data-theme="a" type="tel" id="pageReg_txtRegMobile" class="form-control" placeholder="Enter your mobile">
+                </div>
+                <div>
+                    <label class="c_WhiteLabel">PASSWORD</label>
+                    <input data-theme="a" type="password" id="pageReg_txtRegPassword" class="form-control" placeholder="Enter password">
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a" style="width:70%">
+                        <label class="c_WhiteLabel">VERIFICATION CODE</label>
+                        <input data-theme="a" type="number" id="pageReg_txtRegCode" placeholder="Enter verification code">
+                    </div>
+                    <div class="ui-block-b ui-mini" style="width:30%">
+                        <a data-theme="a" href="" data-role="button" style="margin-top:24px;margin-bottom:0;margin-right:0px" id="pageReg_btnGetRegCode">Get Code</a>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+                <br />
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a href="#" data-role="button" style="background-color: #ab5165; color: white; border: #ab5165; margin-left: 0px; border-radius:2px" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a data-theme="a" href="" data-role="button" id="pageReg_btnReg" class="ui-mini ui-btn-active" style="margin-right: 0px; border-radius: 2px; border:0px">Sign up</a>
+                    </div>
+                </div>
+                <div style="text-align:right;" class="ui-grid-a">
+                    <a href="term.html" data-role="none" class="darkblue" style="font-size: smaller;" data-transition="slide">Terms & Agreement</a>
+                </div>
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- /footer -->
+    </div>
+
+</body>
+</html>
